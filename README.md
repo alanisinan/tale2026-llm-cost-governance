@@ -82,3 +82,27 @@ python3 -m venv .venv && .venv/bin/pip install matplotlib
 Every raw response is logged with its provider-reported token usage and cost, the upstream provider,
 the generation id, and the finish reason. `results/pilot*.jsonl` holds the 15-call pilot used to
 calibrate the protocol; it is not included in the reported results.
+
+## Citation
+
+S. A. Noman and H. A. Noman, "When AI Bills Explode: Integrating LLM Cost Governance into
+Cybersecurity Education and Workforce Training," in *Proc. IEEE Int. Conf. Teaching, Assessment,
+and Learning for Engineering (TALE)*, 2026.
+
+```bibtex
+@inproceedings{noman2026aibills,
+  author    = {Noman, Sinan Ameen and Noman, Haitham Ameen},
+  title     = {When {AI} Bills Explode: Integrating {LLM} Cost Governance into Cybersecurity
+               Education and Workforce Training},
+  booktitle = {Proc. IEEE Int. Conf. Teaching, Assessment, and Learning for Engineering (TALE)},
+  year      = {2026}
+}
+```
+
+Authors: Sinan Ameen Noman (University of Alabama at Tuscaloosa, USA) and
+Haitham Ameen Noman (Princess Sumaya University for Technology, Jordan).
+
+## License
+
+- Code (`run.py`, `judge.py`, `analyze.py`): MIT; see [`LICENSE`](LICENSE).
+- Task materials, answer keys, and results (`tasks/`, `results/`): CC BY 4.0; see [`LICENSE-DATA`](LICENSE-DATA).
