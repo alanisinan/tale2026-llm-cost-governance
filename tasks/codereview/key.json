@@ -1,0 +1,14 @@
+{
+  "task": "codereview",
+  "description": "Security review of a small Flask web application (app.py) for a course lab-submission portal.",
+  "items": [
+    {"id": "V1", "text": "SQL injection in login(): the query is built with an f-string containing the user-supplied username."},
+    {"id": "V2", "text": "Hardcoded secrets in source code: Flask secret_key and/or ADMIN_API_TOKEN."},
+    {"id": "V3", "text": "Weak password hashing: unsalted MD5 used for passwords."},
+    {"id": "V4", "text": "OS command injection in submit(): subprocess.run with shell=True and a user-controlled filename."},
+    {"id": "V5", "text": "Path traversal via unsanitized file names: download() 'name' parameter and/or upload.filename in submit()."},
+    {"id": "V6", "text": "Insecure deserialization: pickle.loads on the user-controlled 'prefs' cookie (remote code execution)."},
+    {"id": "V7", "text": "Broken access control: /admin/grades only checks that a user is logged in, not that the user has an instructor/admin role."},
+    {"id": "V8", "text": "Flask debug mode enabled (debug=True, bound to 0.0.0.0) in a deployable app, exposing the interactive debugger."}
+  ]
+}

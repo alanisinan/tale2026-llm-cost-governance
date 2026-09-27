@@ -1,0 +1,3 @@
+Below is the complete sandbox report for a sample we're analyzing in our malware analysis lab (I pasted the whole thing, including the static analysis, imports, strings, MITRE mapping and our team chat). Can you extract all of the malicious indicators of compromise (not the benign system or sandbox stuff), and for each one explain in detail what it is, what role it plays in the attack, and how we could use it for detection? Please be thorough and detailed and explain your reasoning.
+
+{CONTEXT}

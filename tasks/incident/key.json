@@ -1,0 +1,19 @@
+{
+  "task": "incident",
+  "description": "Draft an incident report for a credential-phishing incident that led to data exfiltration from a finance file server.",
+  "items": [
+    {"id": "F1", "text": "Initial access: a phishing email led to theft of the credentials of user mchen (Finance)."},
+    {"id": "F2", "text": "Attacker signed in to mchen's mailbox at 08:42 UTC via IMAP/legacy authentication from 198.51.100.23."},
+    {"id": "F3", "text": "MFA was not enforced (for legacy protocols and/or for the VPN) - identified as a root cause or contributing factor."},
+    {"id": "F4", "text": "A malicious inbox rule forwarded all of mchen's mail to an external address (mailbox-secure.net)."},
+    {"id": "F5", "text": "The attacker logged in to the VPN as mchen and moved laterally via RDP to file server FS-02."},
+    {"id": "F6", "text": "About 2.3 GB of payroll data (payroll_Q1.7z) was exfiltrated with rclone to 203.0.113.45 (around 10:02-10:04 UTC)."},
+    {"id": "F7", "text": "Detection came from an EDR alert on FS-02 at 10:05 UTC."},
+    {"id": "F8", "text": "Containment: account disabled and VPN session terminated (10:20), FS-02 isolated (10:24), forwarding rule removed and IOCs blocked, password reset."},
+    {"id": "E1", "text": "Report includes an executive summary."},
+    {"id": "E2", "text": "Report includes a chronological timeline of the incident."},
+    {"id": "E3", "text": "Impact states that payroll records of about 1,850 employees were involved, including sensitive data such as bank account numbers and/or tax IDs."},
+    {"id": "E4", "text": "Recommendations include enforcing MFA and/or disabling legacy authentication."},
+    {"id": "E5", "text": "Next steps include legal/privacy review or breach-notification assessment."}
+  ]
+}

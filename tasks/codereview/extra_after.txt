@@ -1,0 +1,144 @@
+
+# utils.py
+"""Helper utilities for LabPortal.
+
+These helpers are intentionally kept free of Flask imports so that they can be unit tested
+without an application context.
+"""
+import csv
+import io
+from datetime import datetime, timezone
+
+from dateutil import parser as dateparser
+
+GRADE_BANDS = [
+    (93, "A"), (90, "A-"), (87, "B+"), (83, "B"), (80, "B-"),
+    (77, "C+"), (73, "C"), (70, "C-"), (60, "D"), (0, "F"),
+]
+
+
+def letter_grade(score):
+    """Convert a numeric score (0-100) to a letter grade."""
+    if score is None:
+        return "N/A"
+    for threshold, letter in GRADE_BANDS:
+        if score >= threshold:
+            return letter
+    return "F"
+
+
+def format_timestamp(value, fmt="%Y-%m-%d %H:%M"):
+    """Format a timestamp string or datetime for display."""
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        value = dateparser.parse(value)
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=timezone.utc)
+    return value.strftime(fmt)
+
+
+def grades_to_csv(rows):
+    """Serialize (username, grade) rows to CSV text."""
+    buf = io.StringIO()
+    writer = csv.writer(buf)
+    writer.writerow(["username", "grade", "letter"])
+    for username, grade in rows:
+        writer.writerow([username, grade, letter_grade(grade)])
+    return buf.getvalue()
+
+
+def humanize_bytes(num):
+    """Return a human-readable file size."""
+    for unit in ["B", "KB", "MB", "GB"]:
+        if num < 1024:
+            return f"{num:.1f} {unit}"
+        num /= 1024
+    return f"{num:.1f} TB"
+
+
+def late_penalty(submitted_at, due_at, per_day=10, max_penalty=50):
+    """Compute a late penalty percentage."""
+    if submitted_at <= due_at:
+        return 0
+    days_late = (submitted_at - due_at).days + 1
+    return min(days_late * per_day, max_penalty)
+
+
+def build_notification(username, lab_name, score):
+    """Build the text of the grade notification message."""
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    return (
+        f"Hello {username},\n\n"
+        f"Your submission for {lab_name} was graded at {now}.\n"
+        f"Score: {score} ({letter_grade(score)})\n\n"
+        "This is an automated message from LabPortal."
+    )
+
+# templates/index.html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LabPortal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{ prefs.get('theme', 'light') }}">
+  <header>
+    <h1>LabPortal</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/download">My submissions</a>
+      {% if session.get('role') == 'instructor' %}<a href="/admin/grades">Grades</a>{% endif %}
+    </nav>
+  </header>
+  <main>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+      <label for="file">Upload your lab submission</label>
+      <input type="file" id="file" name="file">
+      <button type="submit">Submit</button>
+    </form>
+    <section id="results"></section>
+  </main>
+  <footer>CYB 310 - Team 6 - Fall 2025</footer>
+</body>
+</html>
+
+# tests/test_utils.py
+from datetime import datetime, timedelta
+
+from utils import letter_grade, humanize_bytes, late_penalty, grades_to_csv
+
+
+def test_letter_grade_bands():
+    assert letter_grade(95) == "A"
+    assert letter_grade(90) == "A-"
+    assert letter_grade(72) == "C-"
+    assert letter_grade(10) == "F"
+    assert letter_grade(None) == "N/A"
+
+
+def test_humanize_bytes():
+    assert humanize_bytes(512) == "512.0 B"
+    assert humanize_bytes(2048) == "2.0 KB"
+
+
+def test_late_penalty():
+    due = datetime(2026, 3, 1, 23, 59)
+    assert late_penalty(due, due) == 0
+    assert late_penalty(due + timedelta(hours=2), due) == 10
+    assert late_penalty(due + timedelta(days=9), due) == 50
+
+
+def test_grades_to_csv():
+    out = grades_to_csv([("alice", 95), ("bob", 71)])
+    assert "alice,95,A" in out
+    assert "bob,71,C-" in out
+
+# Output of last test run
+$ pytest -q
+....                                                                     [100%]
+4 passed in 0.19s
+$ flake8 .
+./app.py:31:80: E501 line too long (95 > 79 characters)
+./app.py:48:80: E501 line too long (94 > 79 characters)

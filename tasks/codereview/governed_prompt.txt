@@ -1,0 +1,4 @@
+Security review of app.py below. List security vulnerabilities only (no style issues, no rewritten code).
+Output JSON only: [{"location": "function or line", "cwe": "CWE-ID", "issue": "<= 15 words", "fix": "<= 15 words"}], max 10 items.
+
+{CONTEXT}

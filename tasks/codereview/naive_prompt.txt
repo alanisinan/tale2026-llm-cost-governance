@@ -1,0 +1,3 @@
+I'm working on our course's lab submission portal project and I've pasted the entire project below (every file in the repo, plus the output of our last test run). Can you do a complete and thorough security review of the whole codebase? For every problem you find, please explain it in detail, explain why it matters and how an attacker could exploit it, and show me how to fix it. Please be as thorough and detailed as you can and don't leave anything out.
+
+{CONTEXT}

@@ -1,0 +1,88 @@
+---------- Forwarded message ----------
+From: Jordan Alvarez <j.alvarez@northbridge.edu>
+Date: Tue, 10 Mar 2026 at 08:02
+Subject: Fwd: [ACTION REQUIRED] Mailbox deactivation scheduled within 24 hours
+To: Jordan Alvarez <jordan.alvarez.personal@example.com>
+
+Hey, forwarding this to my personal account so I can paste it into the AI tool for the CYB 210 homework. I copied the full message source from Outlook (File > Properties > Internet headers + View source) below, plus the real IT email from last month and the IT policy page, just in case any of it helps.
+
+Hi Prof. Whitaker, if you read this, this is for Lab 4 (email forensics).
+
+Thanks,
+Jordan
+
+--
+Jordan Alvarez
+B.S. Computer Science, Class of 2028
+Northbridge University | School of Computing
+"Security is a process, not a product."
+
+CONFIDENTIALITY NOTICE: This email and any attachments are for the exclusive and confidential use of the intended recipient. If you are not the intended recipient, please do not read, distribute, or take action based on this message. If you have received this in error, please notify the sender immediately by reply email and destroy all copies of the original message. Northbridge University is an equal opportunity institution.
+
+========== FULL MESSAGE SOURCE (from Outlook) ==========
+Received: from BN8PR04MB6212.namprd04.prod.outlook.com (2603:10b6:408:c2::19)
+ by SA1PR04MB8834.namprd04.prod.outlook.com with HTTPS; Tue, 10 Mar 2026
+ 06:14:58 +0000
+Received: from DM6PR02CA0147.namprd02.prod.outlook.com (2603:10b6:5:332::14)
+ by BN8PR04MB6212.namprd04.prod.outlook.com (2603:10b6:408:c2::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.17; Tue, 10 Mar
+ 2026 06:14:57 +0000
+Received: from DS1PEPF00017092.namprd03.prod.outlook.com
+ (2603:10b6:5:332:cafe::7a) by DM6PR02CA0147.outlook.office365.com
+ (2603:10b6:5:332::14) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8489.12 via Frontend Transport; Tue,
+ 10 Mar 2026 06:14:56 +0000
+Received: from relay2.northbridge.edu (192.0.2.25) by
+ DS1PEPF00017092.mail.protection.outlook.com (10.167.18.196) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8466.17
+ via Frontend Transport; Tue, 10 Mar 2026 06:14:55 +0000
+Received: from mx1.northbridge.edu (mx1.northbridge.edu [192.0.2.21])
+	by relay2.northbridge.edu (Postfix) with ESMTPS id 7B1C2A0413
+	for <j.alvarez@northbridge.edu>; Tue, 10 Mar 2026 06:14:54 +0000 (UTC)
+X-MS-Exchange-Organization-ExpirationStartTime: 10 Mar 2026 06:14:56.0741
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ 0b7e3c1a-4d92-4f1e-9e21-08dc5f0a7c33
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 6a1f2e3d-5c4b-4a39-8f7e-2d1c0b9a8f7e:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic:
+ DS1PEPF00017092:EE_|BN8PR04MB6212:EE_|SA1PR04MB8834:EE_
+X-MS-Exchange-Organization-AuthSource:
+ DS1PEPF00017092.namprd03.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 0b7e3c1a-4d92-4f1e-9e21-08dc5f0a7c33
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|4022899009|82310400026|1800799024|
+ 376014|35042699022|69100299015|8096899003;
+X-Forefront-Antispam-Report:
+ CIP:192.0.2.25;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:relay2.northbridge.edu;
+ PTR:relay2.northbridge.edu;CAT:NONE;SFS:(13230040)(4022899009)(82310400026)(1800799024)(376014)(35042699022)(69100299015)(8096899003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2026 06:14:55.9803
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0b7e3c1a-4d92-4f1e-9e21-08dc5f0a7c33
+X-MS-Exchange-CrossTenant-Id: 6a1f2e3d-5c4b-4a39-8f7e-2d1c0b9a8f7e
+X-MS-Exchange-CrossTenant-AuthSource:
+ DS1PEPF00017092.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR04MB6212
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.1142871
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8489.009
+X-Microsoft-Antispam-Mailbox-Delivery:
+ ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097)(3100021)(140003);
+X-Microsoft-Antispam-Message-Info:
+ =?us-ascii?Q?Zm9yIGV4YW1wbGUgb25seSBub3QgYSByZWFsIGhlYWRlciB2YWx1ZSBqdXN0IHBh?=
+ =?us-ascii?Q?ZGRpbmcgdG8gbWFrZSB0aGUgc291cmNlIGxvb2sgbGlrZSBhIHJlYWwgT3V0bG9v?=
+ =?us-ascii?Q?ayBleHBvcnQgd2l0aCBtYW55IGxpbmVzIG9mIG9wYXF1ZSBkYXRhIGluIGl0IHNv?=
+ =?us-ascii?Q?IHRoYXQgdGhlIGhlYWRlcnMgYXJlIGxvbmcgYW5kIHZlcmJvc2UgYXMgdXN1YWw=?=
+X-MS-Exchange-Organization-Recipient-P2-Type: To
+X-MS-Exchange-Organization-AVStamp-Enterprise: 1.0
+X-MS-Exchange-Organization-Antispam-Report: OrigIP: 192.0.2.25;Service: EHS
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator:

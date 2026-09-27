@@ -1,0 +1,20 @@
+INCIDENT NOTES - IR-2026-0314 (analyst: R. Okafor, SOC Tier 2)
+All times UTC, 14 Mar 2026.
+
+07:58  Phishing email "Updated Q1 payroll schedule" delivered to 12 Finance staff. Link to fake SSO page on payroll-portal-nbu[.]com.
+08:31  User mchen (M. Chen, Finance) submitted credentials on the fake page (confirmed from proxy logs).
+08:42  Successful sign-in to mchen's mailbox via IMAP (legacy authentication) from 198.51.100.23 (VPS provider, NL). MFA not enforced for legacy protocols on this account.
+08:49  Inbox rule "sync" created on mchen's mailbox forwarding all mail to mchen.archive@mailbox-secure.net.
+09:07  VPN login as mchen from 198.51.100.23 (VPN uses AD password only; no MFA).
+09:15  RDP from VPN pool address 10.20.8.61 to file server FS-02 using mchen's credentials.
+09:38  7-Zip used on FS-02 to create payroll_Q1.7z (2.3 GB) from \\FS-02\Finance\Payroll\2026.
+10:02  rclone.exe on FS-02 uploads payroll_Q1.7z over HTTPS to 203.0.113.45. Upload completed 10:04 (firewall: 2.3 GB outbound).
+10:05  EDR alert "Suspicious archive + exfiltration tool" on FS-02 (severity high).
+10:11  SOC triage begins (R. Okafor). Incident declared 10:16.
+10:20  mchen disabled in AD and Entra ID; active VPN session terminated.
+10:24  FS-02 network-isolated via EDR.
+10:31  Forwarding rule removed; 203.0.113.45 and payroll-portal-nbu[.]com blocked at firewall/proxy.
+11:05  Password reset for mchen. Sign-in logs reviewed for the other 11 recipients: no further credential submissions found.
+
+Data involved: payroll records for ~1,850 employees (names, bank account numbers, salaries, tax IDs).
+Open items: confirm whether the exfiltrated archive was password-protected; legal/privacy review for breach notification.

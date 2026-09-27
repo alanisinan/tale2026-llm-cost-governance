@@ -1,0 +1,22 @@
+===== SOC SHIFT LOG - Saturday 14 Mar 2026, day shift (06:00-14:00 UTC) =====
+Shift lead: D. Varga. Analysts on shift: R. Okafor (T2), L. Nguyen (T1), S. Patel (T1).
+
+06:02  Shift handover from night shift (K. Brandt). 3 open tickets carried over: SOC-8812 (printer fleet
+       firmware alerts, low), SOC-8815 (false-positive DLP alert on HR share, low), SOC-8819 (vendor VPN
+       certificate expiring 20 Mar, info).
+06:15  L. Nguyen: closed SOC-8815 - DLP alert triggered by HR's annual benefits spreadsheet, confirmed
+       business-as-usual with HR manager, tuned rule DLP-HR-04 to exclude the benefits template.
+06:40  S. Patel: SOC-8812 - printer firmware alerts caused by vendor's scheduled update window; vendor
+       confirmed by email. Suppressed alerts until 12:00. Ticket left open for follow-up.
+07:10  Weekly vulnerability scan kicked off (Nessus, internal ranges). Expected completion 11:00.
+07:25  L. Nguyen: SOC-8823 - user reports "slow internet" in Library. Network team says ISP maintenance.
+       Not a security issue; transferred to NOC.
+07:58  (see IR-2026-0314 notes below)
+08:20  S. Patel: SOC-8826 - impossible-travel alert for student account kpark (Seoul/Chicago). Confirmed
+       student is using a university-approved VPN while travelling. Closed as benign.
+09:00  Coffee machine on 3rd floor broken again, facilities ticket FAC-2231 opened.
+09:45  D. Varga: reminder that the quarterly tabletop exercise is moved to 21 Mar.
+10:05  (see IR-2026-0314 notes below)
+12:30  Nessus scan completed: 4 new criticals on lab subnet (unrelated to incident), tickets SOC-8830..8833.
+13:50  Handover to evening shift (M. Ortiz). IR-2026-0314 remains open.
+

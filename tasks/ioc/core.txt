@@ -1,0 +1,27 @@
+SANDBOX ANALYSIS SUMMARY - sample "Invoice_0314.pdf.exe"
+Verdict: malicious (GlassLoader family). Analysis environment: Windows 10 x64 guest, 180 s run.
+
+Submitted file
+  Name:   Invoice_0314.pdf.exe
+  SHA256: 3402434891b97475d753331113942e566391ac5ad13183dbd03d5cd20ef3386a
+  Size:   412,160 bytes
+
+Process activity
+  Invoice_0314.pdf.exe drops C:\Users\Public\Libraries\msupd.dll
+    (SHA256: 82c84e876820d558a11cee1b086fd2902e1b888649ed16ee2f143a07d4e33c00)
+  C:\Windows\System32\rundll32.exe loads msupd.dll,Start
+    (rundll32.exe SHA256: 859474282da058dd12b06a6edbd46af36da8a0131c23e1a206d5135b04474de8 - Microsoft-signed legitimate system binary)
+  Mutex created: Global\GL_7f2a91c4
+  Second stage written to %TEMP%\wupd.tmp (MD5: d19ae49a49f49408a331661839a94f58)
+
+Persistence
+  HKCU\Software\Microsoft\Windows\CurrentVersion\Run\MsUpdateSvc = "rundll32.exe C:\Users\Public\Libraries\msupd.dll,Start"
+
+Network activity
+  DNS server used by sandbox: 8.8.8.8 (sandbox default resolver)
+  Sandbox guest IP: 10.0.2.15
+  DNS query www.microsoft.com - connectivity check before C2 contact (benign)
+  DNS query cdn-telemetry-sync.net -> 203.0.113.77
+  HTTP POST hxxp://cdn-telemetry-sync[.]net/gate.php to 203.0.113.77:80 (C2 beacon every 60 s)
+  TCP 8443 to 198.51.100.140 (hard-coded fallback C2, no DNS lookup)
+  HTTP GET hxxp://upd.northwind-analytics[.]org/wupd.tmp (second-stage download)

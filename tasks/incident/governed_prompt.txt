@@ -1,0 +1,5 @@
+Draft an incident report from the notes below. Use only facts in the notes.
+Sections: Summary; Timeline (key events only); Impact; Root cause; Containment; Recommendations; Next steps.
+Bullet points, max 300 words total.
+
+{CONTEXT}

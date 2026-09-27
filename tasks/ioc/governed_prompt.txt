@@ -1,0 +1,5 @@
+Extract the malicious IOCs from the report below. Exclude benign system and sandbox artifacts.
+Output JSON only, no explanations:
+{"hashes": [], "domains": [], "urls": [], "ips": [], "file_paths": [], "registry": [], "mutexes": []}
+
+{CONTEXT}

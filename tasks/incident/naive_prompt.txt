@@ -1,0 +1,3 @@
+I need to write the incident report for IR-2026-0314 for our SOC training program. I've pasted everything I have below: the whole shift log, my incident notes, the raw EDR alert, our team chat, and the incident response policy. Please write a complete, professional incident report. Include an executive summary, timeline, impact, root cause, containment, recommendations and next steps, and anything else that would be useful. Make it as detailed and thorough as possible and explain everything fully.
+
+{CONTEXT}

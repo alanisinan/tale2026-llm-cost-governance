@@ -1,0 +1,39 @@
+{
+  "task": "phishing",
+  "description": "Decide whether a university-themed email is phishing and identify the evidence.",
+  "verdict": "phishing",
+  "items": [
+    {
+      "id": "P1",
+      "text": "Lookalike sender domain: northbridge-edu.com impersonates the real northbridge.edu domain."
+    },
+    {
+      "id": "P2",
+      "text": "Email authentication failures: SPF fail, no DKIM signature, and/or DMARC fail."
+    },
+    {
+      "id": "P3",
+      "text": "Reply-To address points to a different external domain (mailbox-secure.net) than the From address."
+    },
+    {
+      "id": "P4",
+      "text": "Message was sent from unrelated third-party infrastructure (qx-dispatch.com Return-Path/Message-ID and/or sending IP 203.0.113.87)."
+    },
+    {
+      "id": "P5",
+      "text": "The link's displayed text (sso.northbridge.edu) does not match its actual target, which points to a non-university host (qx-dispatch.com)."
+    },
+    {
+      "id": "P6",
+      "text": "Urgency or threat: mailbox deactivation and deletion of email within 24 hours."
+    },
+    {
+      "id": "P7",
+      "text": "The message asks the recipient to confirm/enter their username and password (credential harvesting)."
+    },
+    {
+      "id": "P8",
+      "text": "Suspicious HTML attachment (Mailbox_Validation_Form.html) that is a credential form or posts data to an external server."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+
+========== FOR COMPARISON: REAL IT EMAIL I GOT LAST MONTH ==========
+Return-Path: <it-announce@northbridge.edu>
+Received: from relay1.northbridge.edu (relay1.northbridge.edu [192.0.2.24])
+	by mx1.northbridge.edu (Postfix) with ESMTPS id 2Hq8Lw1kTs
+	for <all-students@northbridge.edu>; Mon, 9 Feb 2026 14:00:03 +0000 (UTC)
+Authentication-Results: mx1.northbridge.edu;
+	spf=pass smtp.mailfrom=northbridge.edu;
+	dkim=pass header.d=northbridge.edu header.s=nbu2026;
+	dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=northbridge.edu
+From: "Northbridge IT Announcements" <it-announce@northbridge.edu>
+To: <all-students@northbridge.edu>
+Subject: Scheduled maintenance: Canvas and student email, Sat 14 Feb 02:00-06:00
+Date: Mon, 9 Feb 2026 14:00:01 +0000
+
+Hello Northbridge students,
+
+Information Technology Services will perform scheduled maintenance on Canvas and student email on Saturday, 14 February 2026, from 02:00 to 06:00 Eastern. During this window you may be unable to sign in or send and receive email. No action is required on your part.
+
+Reminder: ITS will never ask for your password by email. If you receive a suspicious message, use the "Report Phishing" button in Outlook or forward it to phishing@northbridge.edu.
+
+Status updates: https://status.northbridge.edu
+
+Information Technology Services
+Northbridge University
+
+========== NORTHBRIDGE UNIVERSITY ACCEPTABLE USE POLICY (EXCERPT, copied from the ITS website) ==========
+Policy 7.12 - Acceptable Use of Information Technology Resources
+Effective: August 1, 2024. Last reviewed: January 15, 2026. Responsible office: Information Technology Services.
+
+1. Purpose. This policy establishes the acceptable use of information technology resources provided by Northbridge University, including but not limited to computers, networks, email, cloud services, software licenses, and data, in support of the University's teaching, research, and service missions.
+
+2. Scope. This policy applies to all students, faculty, staff, contractors, guests, and affiliates who access University information technology resources, whether on campus or remotely, and whether using University-owned or personally owned devices.
+
+3. Account responsibilities. Users are responsible for all activity conducted under their accounts. Users must not share passwords, multi-factor authentication codes, or other credentials with any person, including ITS staff. ITS will never request a password by email, telephone, or text message. Users must promptly report suspected compromise of their account to the ITS Service Desk.
+
+4. Prohibited activities. Prohibited activities include unauthorized access to systems or data; interference with the operation of University systems; distribution of malware; sending unsolicited bulk email; harassment; infringement of intellectual property; and use of University resources for commercial purposes not approved by the University.
+
+5. Email use. University email is the official means of communication with students and employees. Users should exercise caution with unexpected attachments and links. Messages that request credentials, payment, or urgent action should be verified through an independent channel before any action is taken. Suspected phishing should be reported using the "Report Phishing" button or by forwarding the message to phishing@northbridge.edu.
+
+6. Data classification. University data is classified as Public, Internal, Confidential, or Restricted. Restricted data (for example, Social Security numbers, financial account numbers, and protected health information) must not be stored on personal devices or transmitted through unapproved services.
+
+7. Monitoring and privacy. The University does not routinely monitor the content of communications but may access accounts and data when required by law, to protect the security and integrity of University systems, or in connection with an investigation of policy violations, in accordance with applicable procedures.
+
+8. Enforcement. Violations of this policy may result in suspension of access privileges and disciplinary action in accordance with the Student Code of Conduct, the Faculty Handbook, or applicable employment policies, and may be referred to law enforcement where appropriate.
+
+9. Related policies. Policy 7.10 Information Security; Policy 7.14 Data Classification and Handling; Policy 7.20 Incident Response; Student Code of Conduct Section 4.3.
+
+Questions about this policy may be directed to the ITS Service Desk at servicedesk@northbridge.edu or 555-0142.

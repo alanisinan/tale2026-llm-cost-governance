@@ -1,0 +1,24 @@
+{
+  "task": "ioc",
+  "description": "Extract malicious indicators of compromise from a sandbox report while excluding benign system/sandbox artifacts.",
+  "items": [
+    {"id": "I1", "text": "Dropper SHA256 3402434891b97475d753331113942e566391ac5ad13183dbd03d5cd20ef3386a", "match": ["3402434891b97475d753331113942e566391ac5ad13183dbd03d5cd20ef3386a"]},
+    {"id": "I2", "text": "msupd.dll SHA256 82c84e876820d558a11cee1b086fd2902e1b888649ed16ee2f143a07d4e33c00", "match": ["82c84e876820d558a11cee1b086fd2902e1b888649ed16ee2f143a07d4e33c00"]},
+    {"id": "I3", "text": "wupd.tmp MD5 d19ae49a49f49408a331661839a94f58", "match": ["d19ae49a49f49408a331661839a94f58"]},
+    {"id": "I4", "text": "C2 domain cdn-telemetry-sync.net", "match": ["cdn-telemetry-sync.net"]},
+    {"id": "I5", "text": "Second-stage domain upd.northwind-analytics.org", "match": ["upd.northwind-analytics.org"]},
+    {"id": "I6", "text": "C2 URL http://cdn-telemetry-sync.net/gate.php", "match": ["cdn-telemetry-sync.net/gate.php"]},
+    {"id": "I7", "text": "Download URL http://upd.northwind-analytics.org/wupd.tmp", "match": ["upd.northwind-analytics.org/wupd.tmp"]},
+    {"id": "I8", "text": "C2 IP 203.0.113.77", "match": ["203.0.113.77"]},
+    {"id": "I9", "text": "Fallback C2 IP 198.51.100.140", "match": ["198.51.100.140"]},
+    {"id": "I10", "text": "Dropped file path C:\\Users\\Public\\Libraries\\msupd.dll", "match": ["users\\public\\libraries\\msupd.dll"]},
+    {"id": "I11", "text": "Registry Run key HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\MsUpdateSvc", "match": ["msupdatesvc"]},
+    {"id": "I12", "text": "Mutex Global\\GL_7f2a91c4", "match": ["gl_7f2a91c4"]}
+  ],
+  "distractors": [
+    {"id": "D1", "text": "www.microsoft.com (benign connectivity check)"},
+    {"id": "D2", "text": "8.8.8.8 (sandbox DNS resolver)"},
+    {"id": "D3", "text": "10.0.2.15 (sandbox guest IP)"},
+    {"id": "D4", "text": "rundll32.exe SHA256 859474282da058dd12b06a6edbd46af36da8a0131c23e1a206d5135b04474de8 (legitimate Microsoft-signed binary)"}
+  ]
+}

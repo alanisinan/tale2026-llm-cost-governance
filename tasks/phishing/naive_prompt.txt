@@ -1,0 +1,5 @@
+Hi! I'm taking an intro cybersecurity course and I received the email below. I've pasted everything I could find: the full message source with all of the headers, a real email our IT department sent last month for comparison, and the university's acceptable use policy in case any of it is relevant.
+
+Can you please do a really thorough and detailed analysis of whether this email is phishing? Please go through the headers and explain what they mean, walk me through every red flag you can find, explain the techniques the attacker is using and why they work, tell me what I should do now, and include anything else you think I should know. Please be as comprehensive and detailed as possible - I want to learn as much as I can from this.
+
+{CONTEXT}

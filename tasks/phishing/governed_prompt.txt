@@ -1,0 +1,6 @@
+Classify the email below as phishing or legitimate and list the evidence.
+Output JSON only, no prose:
+{"verdict": "phishing" | "legitimate", "indicators": [max 10 items, each <= 12 words], "action": "<= 25 words"}
+
+EMAIL:
+{CONTEXT}

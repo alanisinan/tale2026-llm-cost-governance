@@ -1,0 +1,55 @@
+===== PROJECT: labportal (CYB 310 team project, Team 6) =====
+Below is every file in our repo (I ran `cat` on all of them) plus the output of our last test run.
+
+# README.md
+# LabPortal
+
+LabPortal is a small web application that lets students in CYB 310 upload lab submissions, runs the
+automatic grader on each submission, and lets instructors export grades. It was started in Fall 2025
+by Team 6 and is maintained by the course TAs.
+
+## Features
+- Student login with username and password
+- Upload a lab submission (Python file or zip) and see the autograder output immediately
+- Download your previous submissions
+- Remember display preferences (theme, font size) in a cookie
+- Instructor view of all grades
+- JSON export API for the registrar integration
+
+## Getting started
+1. Create a virtual environment: `python3 -m venv .venv && source .venv/bin/activate`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Initialize the database: `python3 scripts/init_db.py`
+4. Run the server: `python3 app.py`
+5. Open http://localhost:8080 in your browser
+
+## Project layout
+- `app.py` - Flask application and all routes
+- `utils.py` - helper functions (formatting, CSV export, notifications)
+- `templates/` - Jinja2 templates
+- `tests/` - pytest unit tests
+- `scripts/` - maintenance scripts
+
+## Contributing
+Please open a pull request against `main`. All PRs must pass `pytest` and `flake8`. Use conventional
+commit messages (feat:, fix:, docs:, chore:). Squash-merge only. Tag a TA for review.
+
+## Known issues
+- The autograder sometimes times out on very large submissions.
+- Dark mode preference is not applied to the login page.
+- CSV export uses the server's local time zone instead of UTC.
+
+## License
+MIT License. Copyright (c) 2025 CYB 310 Team 6.
+
+# requirements.txt
+Flask==3.0.3
+Werkzeug==3.0.3
+Jinja2==3.1.4
+itsdangerous==2.2.0
+click==8.1.7
+MarkupSafe==2.1.5
+python-dateutil==2.9.0
+pytest==8.2.2
+flake8==7.1.0
+

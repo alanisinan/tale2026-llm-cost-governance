@@ -1,0 +1,70 @@
+
+STATIC ANALYSIS
+  File type:        PE32+ executable (GUI) x86-64, for MS Windows
+  Compiler:         Microsoft Visual C++ 14.3 (Visual Studio 2022)
+  Compile time:     2026-03-09 17:22:41 UTC (possibly forged)
+  Entry point:      0x00014A20
+  Subsystem:        Windows GUI
+  Digital signature: not signed
+  Icon:             resembles Adobe PDF document icon (masquerading)
+  Entropy:          7.41 (likely packed)
+
+  Sections
+    Name     VirtualSize  RawSize   Entropy
+    .text    0x0003B2F0   0x0003B400  6.21
+    .rdata   0x00012A44   0x00012C00  5.02
+    .data    0x00003E10   0x00001200  2.87
+    .pdata   0x00002A6C   0x00002C00  5.33
+    .rsrc    0x0001C9E8   0x0001CA00  7.93   <- high entropy, embedded payload
+    .reloc   0x00000844   0x00000A00  5.11
+
+  Imports (selected)
+    KERNEL32.dll: CreateFileW, WriteFile, CloseHandle, GetTempPathW, CreateMutexW, GetLastError,
+                  VirtualAlloc, VirtualProtect, LoadLibraryW, GetProcAddress, Sleep, CreateProcessW
+    ADVAPI32.dll: RegOpenKeyExW, RegSetValueExW, RegCloseKey
+    WININET.dll:  InternetOpenW, InternetConnectW, HttpOpenRequestW, HttpSendRequestW, InternetReadFile
+    SHELL32.dll:  ShellExecuteW
+    USER32.dll:   MessageBoxW
+
+  Interesting strings (selected)
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    "Content-Type: application/x-www-form-urlencoded"
+    "id=%s&os=%s&v=%s"
+    "Start"
+    "The document could not be opened. The file may be damaged."
+    "%APPDATA%", "%TEMP%"
+
+BEHAVIORAL SIGNATURES
+  [high]   Drops a DLL to a publicly writable directory and executes it with rundll32
+  [high]   Establishes persistence via Run registry key
+  [medium] Creates a mutex likely used to prevent re-infection
+  [medium] Performs HTTP POST beaconing at a fixed interval
+  [medium] Downloads additional payload
+  [low]    Displays a fake error message to the user
+  [low]    Checks internet connectivity before contacting C2
+
+MITRE ATT&CK MAPPING
+  T1204.002 User Execution: Malicious File
+  T1036.007 Masquerading: Double File Extension
+  T1218.011 System Binary Proxy Execution: Rundll32
+  T1547.001 Boot or Logon Autostart Execution: Registry Run Keys
+  T1071.001 Application Layer Protocol: Web Protocols
+  T1105     Ingress Tool Transfer
+  T1027.002 Obfuscated Files or Information: Software Packing
+
+SCREENSHOTS (text description)
+  t=3 s   Dialog box: "The document could not be opened. The file may be damaged." [OK]
+  t=5 s   Desktop idle
+  t=60 s  Desktop idle
+  t=180 s Desktop idle
+
+ANALYSIS ENVIRONMENT
+  Guest OS: Windows 10 Enterprise 22H2 (19045.4046), x64, 4 GB RAM, 2 vCPU
+  Installed software: Microsoft Office 2021, Adobe Acrobat Reader DC, Google Chrome 122, 7-Zip 23.01
+  Network: simulated internet enabled, HTTPS interception enabled
+  Anti-evasion: human interaction simulation on, sleep skipping on
+
+[chat]
+Priya: nice, thanks. prof said to get all the IOCs into the MISP event by friday
+Marcus: also need a short writeup of how it works for the lab report
+Priya: I'll do the writeup if someone does the IOCs

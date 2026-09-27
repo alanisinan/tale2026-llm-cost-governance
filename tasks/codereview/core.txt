@@ -1,0 +1,88 @@
+# app.py
+import base64
+import hashlib
+import os
+import pickle
+import sqlite3
+import subprocess
+
+from flask import Flask, request, session, send_file, jsonify, abort
+
+app = Flask(__name__)
+app.secret_key = "nbu-lab-portal-2026"
+ADMIN_API_TOKEN = "nbu-admin-7f3a9c2e1d4b"
+UPLOAD_DIR = "/srv/labportal/submissions"
+DB_PATH = "/srv/labportal/portal.db"
+
+
+def get_db():
+    return sqlite3.connect(DB_PATH)
+
+
+def hash_password(password):
+    return hashlib.md5(password.encode()).hexdigest()
+
+
+@app.route("/login", methods=["POST"])
+def login():
+    username = request.form["username"]
+    pw_hash = hash_password(request.form["password"])
+    cur = get_db().cursor()
+    cur.execute(
+        f"SELECT id, role FROM users WHERE username = '{username}' AND password_hash = '{pw_hash}'"
+    )
+    row = cur.fetchone()
+    if row is None:
+        return jsonify({"error": "invalid credentials"}), 401
+    session["user_id"], session["role"] = row
+    return jsonify({"status": "ok"})
+
+
+@app.route("/submit", methods=["POST"])
+def submit():
+    if "user_id" not in session:
+        abort(401)
+    upload = request.files["file"]
+    dest = os.path.join(UPLOAD_DIR, upload.filename)
+    upload.save(dest)
+    result = subprocess.run(
+        f"python3 /srv/labportal/grader.py {dest}", shell=True, capture_output=True, text=True
+    )
+    return jsonify({"grade_output": result.stdout})
+
+
+@app.route("/download")
+def download():
+    if "user_id" not in session:
+        abort(401)
+    name = request.args.get("name", "")
+    return send_file(os.path.join(UPLOAD_DIR, name))
+
+
+@app.route("/preferences")
+def preferences():
+    raw = request.cookies.get("prefs")
+    prefs = pickle.loads(base64.b64decode(raw)) if raw else {}
+    return jsonify(prefs)
+
+
+@app.route("/admin/grades")
+def admin_grades():
+    if "user_id" not in session:
+        abort(401)
+    cur = get_db().cursor()
+    cur.execute("SELECT username, grade FROM grades")
+    return jsonify(cur.fetchall())
+
+
+@app.route("/api/export")
+def api_export():
+    if request.headers.get("X-Admin-Token") != ADMIN_API_TOKEN:
+        abort(403)
+    cur = get_db().cursor()
+    cur.execute("SELECT * FROM grades")
+    return jsonify(cur.fetchall())
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080, debug=True)
